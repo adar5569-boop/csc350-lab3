@@ -45,3 +45,33 @@ print(temp[temp>32],(temp>32).sum(),(temp>32).mean())
 print(temp[(temp>=29) & (temp<=33)])
 # 2f. Use np.where to label each day "Hot" (33 or more) or "OK".
 print(np.where(temp>=33,"hot","ok"))
+# =====================================================================
+# Task 3: Gradebook (3 marks)
+# Rows = students, columns = 4 subjects.
+# =====================================================================
+print("\n=== Task 3 ===")
+names = np.array(["Ali", "Sara", "Usman", "Hina", "Bilal"])
+marks = np.array([[78, 85, 62, 90],
+                  [92, 88, 95, 79],
+                  [45, 60, 48, 70],
+                  [88, 94, 91, 85],
+                  [65, 42, 75, 58]])
+# 3a. Print the shape of marks.
+print(marks.shape)
+# 3b. Print Usman's marks (one row) and all marks of subject 3
+#     (column index 2).
+print(f"usman marks ={marks[2,]} subject 3 marks ={marks[:,2]}")
+# 3c. Print the average of each subject and the average of each student.
+print(marks.mean(axis=0),marks.mean(axis=1))
+# 3d. Print the NAME of the student with the highest average.
+#     Hint: argmax gives a position; use it on `names`.
+print(names[np.argmax(marks.mean(axis=1))])
+# 3e. Subject weights are 0.3, 0.3, 0.2, 0.2. Print each student's
+#     weighted total, rounded to 1 decimal. (Broadcasting!)
+weights=np.array([0.3, 0.3, 0.2, 0.2])
+print(np.round((marks*weights).sum(axis=1),1))
+# 3f. Add 5 grace marks to everyone, but no mark may go above 100.
+#     Print the new table. Hint: np.clip
+print(np.clip(marks+5,0,100))
+# 3g. Print how many students failed (below 50) in each subject.
+print((marks<50).sum(axis=0))
