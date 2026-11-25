@@ -28,3 +28,20 @@ print(np.zeros(5,),np.ones((2,3)))
 #     (whole numbers from 1 to 6). Print the result.
 r=np.random.default_rng(42)
 print(r.integers(1,7,size=10))
+# =====================================================================
+# Task 2: Indexing and masks (2.5 marks)  (use `temps` from Task 1)
+# =====================================================================
+print("\n=== Task 2 ===")
+# 2a. Print the first and the last temperature.
+print(temp[0],temp[-1])
+# 2b. Print the weekend temperatures (the last two days).
+print(temp[-2::1])
+# 2c. Print the temperatures in reverse order.
+print(temp[::-1])
+# 2d. Print only the hot days (above 32), how many there are,
+#     and their average.  No loops!
+print(temp[temp>32],(temp>32).sum(),(temp>32).mean())
+# 2e. Print the temperatures from 29 to 33 (both included). Hint: &
+print(temp[(temp>=29) & (temp<=33)])
+# 2f. Use np.where to label each day "Hot" (33 or more) or "OK".
+print(np.where(temp>=33,"hot","ok"))
