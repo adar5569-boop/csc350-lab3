@@ -45,6 +45,7 @@ print(temp[temp>32],(temp>32).sum(),(temp>32).mean())
 print(temp[(temp>=29) & (temp<=33)])
 # 2f. Use np.where to label each day "Hot" (33 or more) or "OK".
 print(np.where(temp>=33,"hot","ok"))
+
 # =====================================================================
 # Task 3: Gradebook (3 marks)
 # Rows = students, columns = 4 subjects.
@@ -75,3 +76,25 @@ print(np.round((marks*weights).sum(axis=1),1))
 print(np.clip(marks+5,0,100))
 # 3g. Print how many students failed (below 50) in each subject.
 print((marks<50).sum(axis=0))
+
+# =====================================================================
+# Task 4: An image is an array (2.5 marks)
+# A 5 x 5 grayscale image: 0 = black, 255 = white.
+# =====================================================================
+print("\n=== Task 4 ===")
+img = np.array([[ 10,  10, 200,  10,  10],
+                [ 10,  10, 220,  10,  10],
+                [210, 230, 250, 230, 210],
+                [ 10,  10, 220,  10,  10],
+                [ 10,  10, 200,  10,  10]])
+# 4a. Print the shape, the darkest value and the brightest value.
+print(img.shape,img.min(),img.max())
+# 4b. Print the inverted image (white becomes black). Hint: 255 - ...
+print(255-img)
+# 4c. Print a black-and-white version: 1 where the pixel is above 128,
+#     else 0. Hint: a mask, then .astype(int)
+print(np.where(img>128, 1,0))
+# 4d. Print row 2 normalized to the range 0 to 1, rounded to 2 decimals.
+print(np.round(img[2]/255,2))
+# 4e. Print the 3 x 3 centre of the image (crop).
+print(img[1:4,1:4])
